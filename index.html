@@ -229,7 +229,7 @@
             products.forEach(product => {
                 const statusClass = product.status === 'Available' ? 'status-available' : 'status-out';
                 const col = document.createElement('div');
-                col.className = 'col-md-3 mb-4';
+                col.className = 'col-6 col-md-3 mb-4';  // Updated for better mobile responsiveness: 2 per row on small screens, 4 on medium+
                 col.innerHTML = `
                     <div class="card product-card h-100">
                         <img src="${product.image}" class="card-img-top product-img" alt="${product.name}">
