@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!-- Google Maps JavaScript API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAMLYrbp_I_haN8FxwO1jopcU8z3yuTuC8&callback=initMap"></script>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -87,6 +89,12 @@
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 1050;
+        }
+        #map {
+            height: 300px;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -194,7 +202,8 @@
             <a href="https://wa.me/+265994768244" target="_blank" class="contact-icon"><i class="fab fa-whatsapp"></i></a>
             <a href="mailto:dumisanitukula@gmail.com" class="contact-icon"><i class="fas fa-envelope"></i></a>
             <p class="mt-3">SwaggeStyle.co - Blantyre, Malawi</p>
-            <p>Website Designed by Dynamité Mw.</p>
+            <div id="map"></div>
+            <p class="mt-3">Website Designed by Dynamité Mw.</p>
         </div>
     </footer>
 
@@ -223,9 +232,27 @@
             localStorage.setItem('products', JSON.stringify(products));
         }
 
+        // Initialize Google Map
+        function initMap() {
+            try {
+                const blantyre = { lat: -15.7861, lng: 35.0058 };
+                const map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 14,
+                    center: blantyre
+                });
+                new google.maps.Marker({
+                    position: blantyre,
+                    map: map,
+                    title: 'SwaggeStyle.co - Blantyre'
+                });
+            } catch (error) {
+                console.error('Error loading Google Map:', error);
+                document.getElementById('map').innerHTML = '<p class="text-danger">Failed to load map. Please check API key and billing settings.</p>';
+            }
+        }
+
         // Mock backend: Simulate uploading image to Google Cloud Storage
         function simulateUploadToGCS(file, productName) {
-            // This is a mock function; actual uploads require a server
             if (!file) return null;
             const simulatedUrl = `https://storage.googleapis.com/${BUCKET_NAME}/${productName}_${file.name}`;
             alert(`Simulated upload: ${file.name}. Using URL: ${simulatedUrl}`);
