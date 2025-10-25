@@ -10,6 +10,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!-- Google AdSense Script (Replace with your actual code) -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUB_ID_HERE"
+     crossorigin="anonymous"></script>
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -121,6 +124,18 @@
             <h2 class="mb-4 text-center">Our Collection</h2>
             <div class="row" id="product-list"></div>
         </section>
+        <!-- Sample AdSense Ad Unit (Replace with your actual ad code) -->
+        <div class="text-center my-5">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_PUB_ID_HERE"
+                 data-ad-slot="YOUR_AD_SLOT_ID_HERE"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
     </div>
 
     <!-- Admin Login Modal -->
@@ -222,14 +237,14 @@
             products.forEach((p, i) => p.id = i + 1);
         }
 
-        // Display products
+        // Display products (Updated with PayPal buttons)
         function displayProducts() {
             const productList = document.getElementById('product-list');
             productList.innerHTML = '';
             products.forEach(product => {
                 const statusClass = product.status === 'Available' ? 'status-available' : 'status-out';
                 const col = document.createElement('div');
-                col.className = 'col-6 col-md-3 mb-4';  // Updated for better mobile responsiveness: 2 per row on small screens, 4 on medium+
+                col.className = 'col-6 col-md-3 mb-4';
                 col.innerHTML = `
                     <div class="card product-card h-100">
                         <img src="${product.image}" class="card-img-top product-img" alt="${product.name}">
@@ -237,7 +252,14 @@
                             <h5 class="card-title">${product.name}</h5>
                             <p class="card-text price">$${product.price.toFixed(2)}</p>
                             <p class="card-text small ${statusClass}">${product.status}</p>
-                            <button class="btn btn-primary mt-auto" onclick="contactForPurchase('${product.name}')">Inquire</button>
+                            <!-- PayPal Buy Now Button (Replace this entire form with your generated PayPal code) -->
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" class="mt-2">
+                                <input type="hidden" name="cmd" value="_s-xclick">
+                                <input type="hidden" name="hosted_button_id" value="YOUR_HOSTED_BUTTON_ID_HERE">
+                                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                            </form>
+                            <button class="btn btn-secondary mt-2" onclick="contactForPurchase('${product.name}')">Inquire</button>
                         </div>
                     </div>
                 `;
