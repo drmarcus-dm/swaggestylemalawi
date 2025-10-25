@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwaggeStyle.co - Premium Fashion in Blantyre</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        header {
+            background: linear-gradient(135deg, #007bff, #6f42c1);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        header p {
+            font-size: 1.3em;
+            margin: 15px 0 0;
+            font-weight: 400;
+        }
+        nav {
+            background: #343a40;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        nav a {
+            color: #f8f9fa;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #007bff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .product {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .product img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .product h3 {
+            margin: 0 0 10px;
+            font-size: 1.6em;
+            font-weight: 500;
+        }
+        .product .price {
+            font-size: 1.3em;
+            color: #28a745;
+            font-weight: 700;
+        }
+        .product .status {
+            font-size: 1em;
+            color: #6c757d;
+            margin: 5px 0 15px;
+        }
+        .product button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .product button:hover {
+            background: #0056b3;
+        }
+        .admin-login {
+            background: #fff;
+            max-width: 350px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            display: none;
+        }
+        .admin-login input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .admin-login button {
+            width: 100%;
+            background: #343a40;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .admin-login button:hover {
+            background: #23272b;
+        }
+        .admin-panel {
+            display: none;
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin: 30px auto;
+            max-width: 900px;
+        }
+        .admin-product {
+            margin-bottom: 25px;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 15px;
+        }
+        .admin-product h3 {
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        .admin-product label {
+            font-weight: 500;
+            margin-right: 10px;
+        }
+        .admin-product input {
+            width: 120px;
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .admin-product select {
+            padding: 8px;
+            margin: 5px 0;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        .admin-panel button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .admin-panel button:hover {
+            background: #218838;
+        }
+        .admin-panel button:last-child {
+            background: #dc3545;
+        }
+        .admin-panel button:last-child:hover {
+            background: #c82333;
+        }
+        footer {
+            background: #343a40;
+            color: #f8f9fa;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            font-size: 0.9em;
+        }
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        footer a:hover {
+            color: #0056b3;
+        }
+        .contact-icons {
+            margin: 15px 0;
+        }
+        .contact-icons img {
+            width: 35px;
+            margin: 0 15px;
+            transition: transform 0.3s;
+        }
+        .contact-icons img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>SwaggeStyle.co</h1>
+        <p>Premium Clothes, Trousers, Shirts & High-Demand Fashion | Based in Blantyre, Shipping Worldwide</p>
+    </header>
+    <nav>
+        <a href="#products">Shop</a>
+        <a href="#contact">Contact</a>
+        <a href="#" id="admin-link">Admin Login</a>
+    </nav>
+    <div class="container">
+        <section id="products">
+            <h2>Our Collection</h2>
+            <div class="products" id="product-list"></div>
+        </section>
+    </div>
+    <div class="admin-login" id="admin-login">
+        <h3>Admin Login</h3>
+        <input type="text" id="admin-username" placeholder="Username">
+        <input type="password" id="admin-password" placeholder="Password">
+        <button onclick="loginAdmin()">Login</button>
+    </div>
+    <div class="admin-panel" id="admin-panel">
+        <h2>Admin Panel</h2>
+        <div id="admin-products"></div>
+        <button onclick="saveChanges()">Save Changes</button>
+        <button onclick="logoutAdmin()">Logout</button>
+    </div>
+    <footer id="contact">
+        <p>Contact us for offers and transactions:</p>
+        <div class="contact-icons">
+            <a href="https://wa.me/+265994768244" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
+            <a href="mailto:dumisanitukula@gmail.com"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email"></a>
+        </div>
+        <p>SwaggeStyle.co - Blantyre, Malawi</p>
+        <p>Website Designed by Dynamité Mw.</p>
+    </footer>
+
+    <script>
+        // Fixed admin credentials
+        const ADMIN_USERNAME = 'admin';
+        const ADMIN_PASSWORD = 'password';
+
+        // Initial products data
+        let products = [
+            { id: 1, name: 'Stylish T-Shirt', price: 25.00, status: 'Available', image: 'https://via.placeholder.com/300x200?text=T-Shirt' },
+            { id: 2, name: 'Slim Fit Trousers', price: 45.00, status: 'Available', image: 'https://via.placeholder.com/300x200?text=Trousers' },
+            { id: 3, name: 'Classic Shirt', price: 35.00, status: 'Out of Stock', image: 'https://via.placeholder.com/300x200?text=Shirt' },
+            { id: 4, name: 'Trendy Jacket', price: 60.00, status: 'Available', image: 'https://via.placeholder.com/300x200?text=Jacket' }
+        ];
+
+        // Load products from localStorage if available
+        if (localStorage.getItem('products')) {
+            products = JSON.parse(localStorage.getItem('products'));
+        }
+
+        // Display products
+        function displayProducts() {
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = '';
+            products.forEach(product => {
+                const div = document.createElement('div');
+                div.className = 'product';
+                div.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p class="price">$${product.price.toFixed(2)}</p>
+                    <p class="status">${product.status}</p>
+                    <button onclick="contactForPurchase('${product.name}')">Inquire</button>
+                `;
+                productList.appendChild(div);
+            });
+        }
+
+        // Contact function (opens WhatsApp)
+        function contactForPurchase(productName) {
+            const message = encodeURIComponent(`I'm interested in ${productName}. Can you provide more details?`);
+            window.open(`https://wa.me/+265994768244?text=${message}`, '_blank');
+        }
+
+        // Show admin login
+        document.getElementById('admin-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            document.getElementById('admin-login').style.display = 'block';
+        });
+
+        // Login admin
+        function loginAdmin() {
+            const username = document.getElementById('admin-username').value;
+            const password = document.getElementById('admin-password').value;
+            if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+                document.getElementById('admin-login').style.display = 'none';
+                document.getElementById('admin-panel').style.display = 'block';
+                displayAdminProducts();
+            } else {
+                alert('Invalid credentials');
+            }
+        }
+
+        // Display admin products for editing
+        function displayAdminProducts() {
+            const adminProducts = document.getElementById('admin-products');
+            adminProducts.innerHTML = '';
+            products.forEach(product => {
+                const div = document.createElement('div');
+                div.className = 'admin-product';
+                div.innerHTML = `
+                    <h3>${product.name}</h3>
+                    <label>Price: </label><input type="number" value="${product.price}" id="price-${product.id}">
+                    <label>Status: </label>
+                    <select id="status-${product.id}">
+                        <option value="Available" ${product.status === 'Available' ? 'selected' : ''}>Available</option>
+                        <option value="Out of Stock" ${product.status === 'Out of Stock' ? 'selected' : ''}>Out of Stock</option>
+                    </select>
+                `;
+                adminProducts.appendChild(div);
+            });
+        }
+
+        // Save changes to localStorage
+        function saveChanges() {
+            products.forEach(product => {
+                const newPrice = parseFloat(document.getElementById(`price-${product.id}`).value);
+                const newStatus = document.getElementById(`status-${product.id}`).value;
+                if (!isNaN(newPrice)) product.price = newPrice;
+                product.status = newStatus;
+            });
+            localStorage.setItem('products', JSON.stringify(products));
+            displayProducts();
+            alert('Changes saved!');
+        }
+
+        // Logout admin
+        function logoutAdmin() {
+            document.getElementById('admin-panel').style.display = 'none';
+        }
+
+        // Initial display
+        displayProducts();
+    </script>
+</body>
+</html>
