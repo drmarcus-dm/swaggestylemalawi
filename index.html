@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SwaggeStyle.co - Premium Fashion in Blantyre</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
             background-color: #f8f9fa;
             color: #212529;
         }
@@ -17,248 +20,187 @@
             background: linear-gradient(135deg, #007bff, #6f42c1);
             color: white;
             text-align: center;
-            padding: 80px 20px;
-            position: relative;
+            padding: 100px 20px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         header h1 {
-            font-size: 3.5em;
-            margin: 0;
+            font-size: 4em;
             font-weight: 700;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
         }
         header p {
-            font-size: 1.3em;
-            margin: 15px 0 0;
+            font-size: 1.4em;
             font-weight: 400;
         }
-        nav {
-            background: #343a40;
-            color: white;
-            padding: 15px;
-            text-align: center;
+        .navbar {
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        nav a {
-            color: #f8f9fa;
-            margin: 0 20px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
+        .navbar-brand {
+            font-weight: 700;
         }
-        nav a:hover {
-            color: #007bff;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 30px auto;
-            padding: 20px;
-        }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-        .product {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            padding: 20px;
-            text-align: center;
+        .product-card {
             transition: transform 0.3s, box-shadow 0.3s;
         }
-        .product:hover {
+        .product-card:hover {
             transform: translateY(-8px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
-        .product img {
-            width: 100%;
-            height: 220px;
+        .product-img {
+            height: 250px;
             object-fit: cover;
-            border-radius: 8px;
-            margin-bottom: 15px;
         }
-        .product h3 {
-            margin: 0 0 10px;
-            font-size: 1.6em;
-            font-weight: 500;
-        }
-        .product .price {
-            font-size: 1.3em;
+        .price {
             color: #28a745;
             font-weight: 700;
         }
-        .product .status {
-            font-size: 1em;
-            color: #6c757d;
-            margin: 5px 0 15px;
+        .status-available {
+            color: #198754;
         }
-        .product button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: background 0.3s;
-        }
-        .product button:hover {
-            background: #0056b3;
-        }
-        .admin-login {
-            background: #fff;
-            max-width: 350px;
-            margin: 30px auto;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            display: none;
-        }
-        .admin-login input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            font-size: 1em;
-        }
-        .admin-login button {
-            width: 100%;
-            background: #343a40;
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: background 0.3s;
-        }
-        .admin-login button:hover {
-            background: #23272b;
-        }
-        .admin-panel {
-            display: none;
-            background: #fff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            margin: 30px auto;
-            max-width: 900px;
-        }
-        .admin-product {
-            margin-bottom: 25px;
-            border-bottom: 1px solid #dee2e6;
-            padding-bottom: 15px;
-        }
-        .admin-product h3 {
-            font-size: 1.4em;
-            margin-bottom: 10px;
-        }
-        .admin-product label {
-            font-weight: 500;
-            margin-right: 10px;
-        }
-        .admin-product input {
-            width: 120px;
-            padding: 8px;
-            margin: 5px 0;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-        .admin-product select {
-            padding: 8px;
-            margin: 5px 0;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-        }
-        .admin-panel button {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 12px 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-right: 10px;
-            font-weight: 500;
-            transition: background 0.3s;
-        }
-        .admin-panel button:hover {
-            background: #218838;
-        }
-        .admin-panel button:last-child {
-            background: #dc3545;
-        }
-        .admin-panel button:last-child:hover {
-            background: #c82333;
+        .status-out {
+            color: #dc3545;
         }
         footer {
             background: #343a40;
             color: #f8f9fa;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
+            padding: 40px 0;
             font-size: 0.9em;
         }
-        footer a {
-            color: #007bff;
-            text-decoration: none;
+        .contact-icon {
+            font-size: 1.5em;
+            margin: 0 15px;
+            color: #f8f9fa;
             transition: color 0.3s;
         }
-        footer a:hover {
-            color: #0056b3;
+        .contact-icon:hover {
+            color: #007bff;
         }
-        .contact-icons {
-            margin: 15px 0;
+        /* Admin Modal Styles */
+        .admin-modal .modal-content {
+            border-radius: 10px;
         }
-        .contact-icons img {
-            width: 35px;
-            margin: 0 15px;
-            transition: transform 0.3s;
+        .admin-panel .list-group-item {
+            border-bottom: 1px solid #dee2e6;
         }
-        .contact-icons img:hover {
-            transform: scale(1.1);
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1050;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>SwaggeStyle.co</h1>
-        <p>Premium Clothes, Trousers, Shirts & High-Demand Fashion | Based in Blantyre, Shipping Worldwide</p>
+    <header class="py-5">
+        <div class="container">
+            <h1>SwaggeStyle.co</h1>
+            <p>Premium Clothes, Trousers, Shirts & High-Demand Fashion | Based in Blantyre, Shipping Worldwide</p>
+        </div>
     </header>
-    <nav>
-        <a href="#products">Shop</a>
-        <a href="#contact">Contact</a>
-        <a href="#" id="admin-link">Admin Login</a>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">SwaggeStyle</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#products">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#adminModal">Admin Login</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
-    <div class="container">
+
+    <div class="container my-5">
         <section id="products">
-            <h2>Our Collection</h2>
-            <div class="products" id="product-list"></div>
+            <h2 class="mb-4 text-center">Our Collection</h2>
+            <div class="row" id="product-list"></div>
         </section>
     </div>
-    <div class="admin-login" id="admin-login">
-        <h3>Admin Login</h3>
-        <input type="text" id="admin-username" placeholder="Username">
-        <input type="password" id="admin-password" placeholder="Password">
-        <button onclick="loginAdmin()">Login</button>
-    </div>
-    <div class="admin-panel" id="admin-panel">
-        <h2>Admin Panel</h2>
-        <div id="admin-products"></div>
-        <button onclick="saveChanges()">Save Changes</button>
-        <button onclick="logoutAdmin()">Logout</button>
-    </div>
-    <footer id="contact">
-        <p>Contact us for offers and transactions:</p>
-        <div class="contact-icons">
-            <a href="https://wa.me/+265994768244" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"></a>
-            <a href="mailto:dumisanitukula@gmail.com"><img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mail_%28iOS%29.svg" alt="Email"></a>
+
+    <!-- Admin Login Modal -->
+    <div class="modal fade" id="adminModal" tabindex="-1" aria-labelledby="adminModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="adminModalLabel">Admin Login</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="admin-form">
+                        <div class="mb-3">
+                            <label for="admin-username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="admin-username" placeholder="Username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="admin-password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="admin-password" placeholder="Password">
+                        </div>
+                        <button type="button" class="btn btn-primary w-100" onclick="loginAdmin()">Login</button>
+                    </form>
+                </div>
+            </div>
         </div>
-        <p>SwaggeStyle.co - Blantyre, Malawi</p>
-        <p>Website Designed by Dynamité Mw.</p>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="container my-5 d-none" id="admin-panel">
+        <h2 class="mb-4 text-center">Admin Panel</h2>
+        <div class="list-group" id="admin-products"></div>
+        <div class="mt-4 text-center">
+            <button class="btn btn-success me-2" onclick="saveChanges()">Save Changes</button>
+            <button class="btn btn-danger" onclick="logoutAdmin()">Logout</button>
+        </div>
+        <!-- Add New Product Form -->
+        <div class="mt-5">
+            <h3>Add New Product</h3>
+            <form id="add-product-form">
+                <div class="mb-3">
+                    <label for="new-name" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="new-name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="new-price" class="form-label">Price ($)</label>
+                    <input type="number" class="form-control" id="new-price" step="0.01" required>
+                </div>
+                <div class="mb-3">
+                    <label for="new-status" class="form-label">Status</label>
+                    <select class="form-select" id="new-status">
+                        <option value="Available">Available</option>
+                        <option value="Out of Stock">Out of Stock</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="new-image" class="form-label">Image URL</label>
+                    <input type="url" class="form-control" id="new-image" required>
+                </div>
+                <button type="button" class="btn btn-primary" onclick="addNewProduct()">Add Product</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="spinner-border text-primary spinner" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+
+    <footer id="contact" class="text-center">
+        <div class="container">
+            <p class="mb-3">Contact us for offers and transactions:</p>
+            <a href="https://wa.me/+265994768244" target="_blank" class="contact-icon"><i class="fab fa-whatsapp"></i></a>
+            <a href="mailto:dumisanitukula@gmail.com" class="contact-icon"><i class="fas fa-envelope"></i></a>
+            <p class="mt-3">SwaggeStyle.co - Blantyre, Malawi</p>
+            <p>Website Designed by Dynamité Mw.</p>
+        </div>
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script>
         // Fixed admin credentials
         const ADMIN_USERNAME = 'admin';
@@ -275,6 +217,9 @@
         // Load products from localStorage if available
         if (localStorage.getItem('products')) {
             products = JSON.parse(localStorage.getItem('products'));
+        } else {
+            // Assign incremental IDs if none
+            products.forEach((p, i) => p.id = i + 1);
         }
 
         // Display products
@@ -282,16 +227,21 @@
             const productList = document.getElementById('product-list');
             productList.innerHTML = '';
             products.forEach(product => {
-                const div = document.createElement('div');
-                div.className = 'product';
-                div.innerHTML = `
-                    <img src="${product.image}" alt="${product.name}">
-                    <h3>${product.name}</h3>
-                    <p class="price">$${product.price.toFixed(2)}</p>
-                    <p class="status">${product.status}</p>
-                    <button onclick="contactForPurchase('${product.name}')">Inquire</button>
+                const statusClass = product.status === 'Available' ? 'status-available' : 'status-out';
+                const col = document.createElement('div');
+                col.className = 'col-md-3 mb-4';
+                col.innerHTML = `
+                    <div class="card product-card h-100">
+                        <img src="${product.image}" class="card-img-top product-img" alt="${product.name}">
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="card-text price">$${product.price.toFixed(2)}</p>
+                            <p class="card-text small ${statusClass}">${product.status}</p>
+                            <button class="btn btn-primary mt-auto" onclick="contactForPurchase('${product.name}')">Inquire</button>
+                        </div>
+                    </div>
                 `;
-                productList.appendChild(div);
+                productList.appendChild(col);
             });
         }
 
@@ -301,19 +251,14 @@
             window.open(`https://wa.me/+265994768244?text=${message}`, '_blank');
         }
 
-        // Show admin login
-        document.getElementById('admin-link').addEventListener('click', (e) => {
-            e.preventDefault();
-            document.getElementById('admin-login').style.display = 'block';
-        });
-
         // Login admin
         function loginAdmin() {
             const username = document.getElementById('admin-username').value;
             const password = document.getElementById('admin-password').value;
             if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-                document.getElementById('admin-login').style.display = 'none';
-                document.getElementById('admin-panel').style.display = 'block';
+                const modal = bootstrap.Modal.getInstance(document.getElementById('adminModal'));
+                modal.hide();
+                document.getElementById('admin-panel').classList.remove('d-none');
                 displayAdminProducts();
             } else {
                 alert('Invalid credentials');
@@ -325,37 +270,93 @@
             const adminProducts = document.getElementById('admin-products');
             adminProducts.innerHTML = '';
             products.forEach(product => {
-                const div = document.createElement('div');
-                div.className = 'admin-product';
-                div.innerHTML = `
-                    <h3>${product.name}</h3>
-                    <label>Price: </label><input type="number" value="${product.price}" id="price-${product.id}">
-                    <label>Status: </label>
-                    <select id="status-${product.id}">
-                        <option value="Available" ${product.status === 'Available' ? 'selected' : ''}>Available</option>
-                        <option value="Out of Stock" ${product.status === 'Out of Stock' ? 'selected' : ''}>Out of Stock</option>
-                    </select>
+                const item = document.createElement('div');
+                item.className = 'list-group-item admin-product';
+                item.innerHTML = `
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5>${product.name}</h5>
+                        <button class="btn btn-sm btn-danger" onclick="removeProduct(${product.id})"><i class="fas fa-trash"></i></button>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label>Price:</label>
+                            <input type="number" class="form-control" value="${product.price}" id="price-${product.id}">
+                        </div>
+                        <div class="col-md-4">
+                            <label>Status:</label>
+                            <select class="form-select" id="status-${product.id}">
+                                <option value="Available" ${product.status === 'Available' ? 'selected' : ''}>Available</option>
+                                <option value="Out of Stock" ${product.status === 'Out of Stock' ? 'selected' : ''}>Out of Stock</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <label>Image URL:</label>
+                            <input type="url" class="form-control" value="${product.image}" id="image-${product.id}">
+                        </div>
+                    </div>
                 `;
-                adminProducts.appendChild(div);
+                adminProducts.appendChild(item);
             });
         }
 
         // Save changes to localStorage
         function saveChanges() {
+            showSpinner();
             products.forEach(product => {
                 const newPrice = parseFloat(document.getElementById(`price-${product.id}`).value);
                 const newStatus = document.getElementById(`status-${product.id}`).value;
+                const newImage = document.getElementById(`image-${product.id}`).value;
                 if (!isNaN(newPrice)) product.price = newPrice;
                 product.status = newStatus;
+                product.image = newImage;
             });
             localStorage.setItem('products', JSON.stringify(products));
             displayProducts();
+            displayAdminProducts();
+            hideSpinner();
             alert('Changes saved!');
         }
 
         // Logout admin
         function logoutAdmin() {
-            document.getElementById('admin-panel').style.display = 'none';
+            document.getElementById('admin-panel').classList.add('d-none');
+        }
+
+        // Add new product
+        function addNewProduct() {
+            const name = document.getElementById('new-name').value;
+            const price = parseFloat(document.getElementById('new-price').value);
+            const status = document.getElementById('new-status').value;
+            const image = document.getElementById('new-image').value;
+            if (name && !isNaN(price) && image) {
+                const newId = products.length ? Math.max(...products.map(p => p.id)) + 1 : 1;
+                products.push({ id: newId, name, price, status, image });
+                localStorage.setItem('products', JSON.stringify(products));
+                displayProducts();
+                displayAdminProducts();
+                document.getElementById('add-product-form').reset();
+                alert('Product added!');
+            } else {
+                alert('Please fill all fields correctly.');
+            }
+        }
+
+        // Remove product
+        function removeProduct(id) {
+            if (confirm('Are you sure you want to remove this product?')) {
+                products = products.filter(p => p.id !== id);
+                localStorage.setItem('products', JSON.stringify(products));
+                displayProducts();
+                displayAdminProducts();
+            }
+        }
+
+        // Show/Hide Spinner
+        function showSpinner() {
+            document.querySelector('.spinner').style.display = 'block';
+        }
+        function hideSpinner() {
+            document.querySelector('.spinner').style.display = 'none';
         }
 
         // Initial display
